@@ -16,17 +16,16 @@ public:
 
 		/* Name anchor point as ap. */
 		ListNode *ap1 = head;
-		ListNode *ap2 = head;
 
-		while(ap2->next) {
-			if (ap1->val == ap2->next->val) {
+		while(ap1 && ap1->next) {
+			if (ap1->val == ap1->next->val) {
+				ListNode *tmp = ap1->next;
+				ap1->next = ap1->next->next;
+				delete tmp;
 			} else {
-				ap1->next = ap2->next;
-				ap1 = ap2->next;
+				ap1 = ap1->next;
 			}
-			ap2 = ap2->next;
 		}
-		ap1->next = NULL;
 		return head;
 	}
 };
