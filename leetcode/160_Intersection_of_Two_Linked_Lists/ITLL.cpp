@@ -50,11 +50,11 @@ public:
 		if (!headA || !headB) return NULL;
 		ListNode *tmpA = headA, *tmpB = headB;
 
-		while(tmpA && tmpB && tmpA != tmpB) {
-			tmpA = !(tmpA->next) ? headB : tmpA->next;
-			tmpB = !(tmpB->next) ? headA : tmpB->next;
+		while(tmpA != tmpB) {
+			tmpA = !tmpA ? headB : tmpA->next;
+			tmpB = !tmpB ? headA : tmpB->next;
 		}
-		return (tmpA && tmpB) ? tmpA : NULL;
+		return tmpA;
 	}
 };
 
@@ -84,18 +84,25 @@ int main()
 
 	b1->next = b2;
 	b2->next = b3;
-	b3->next = a3;
+	//b3->next = a3;
 
 	printList(a1);
 	printList(b1);
 
     //struct ListNode *head = Solution::reverseList(a1);
     struct ListNode *inter = Solution::getIntersectionNode(a1, b1);
+	if (inter)
+		cout << inter->val << endl;
+	else
+		cout << "NULL!" << endl;
+
 	struct ListNode *inter2 = Solution::getIntersectionNode2(a1, b1);
+	if (inter2)
+		cout << inter2->val << endl;
+	else
+		cout << "NULL!" << endl;
 
 
-	cout << inter->val << endl;
-	cout << inter2->val << endl;
     return 0;
 }
 
