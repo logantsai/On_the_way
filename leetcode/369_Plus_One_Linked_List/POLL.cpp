@@ -67,13 +67,10 @@ public:
 
 		if (index->val == -1) {
 			index->next = head;
-			++index->val;
 			head = index;
-			index = head->next;
-		} else {
-			++index->val;
-			index = index->next;
 		}
+		++index->val;
+		index = index->next;
 
 		while(index) {
 			index->val = 0;
