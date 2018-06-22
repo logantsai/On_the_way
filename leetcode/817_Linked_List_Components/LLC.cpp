@@ -36,6 +36,18 @@ public:
 		num_cpnts = (pre_result == true) ? ++num_cpnts : num_cpnts;
 		return num_cpnts;
     }
+
+    static int numComponents_unordered_set(ListNode* head, vector<int>& G) {
+		unordered_set<int> setG(G.begin(), G.end());
+		int num_cpnts = 0;
+		while(head) {
+			if (setG.count(head->val) &&
+				(!head->next || setG.count(head->next->val)))
+			num_cpnts++;
+			head = head->next;
+		}
+		return num_cpnts;
+    }
 };
 
 
@@ -66,7 +78,10 @@ int main() {
 	printList(tmp[0]);
 
 	int num_cpnts = Solution::numComponents(tmp[0], vG);
-	cout << "Components : " <<num_cpnts << endl;
+	int num_cpnts2 = Solution::numComponents_unordered_set(tmp[0], vG);
+
+	cout << "Components : " << num_cpnts << endl;
+	cout << "Components : " << num_cpnts2 << endl;
 
 
 	return 0;
