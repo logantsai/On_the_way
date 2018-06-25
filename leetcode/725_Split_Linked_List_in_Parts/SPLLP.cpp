@@ -75,21 +75,15 @@ public:
 		int i = 0;
 		int j = 0;
 		ListNode *cur = root;
-		ListNode *dummy = new ListNode(-1);
-		ListNode *end;
-		dummy->next = root;
+		ListNode *pre;
 
-		for (i = 0; i < k; i++, R--) {
-			for (j = 1; j < Q + (R > 0); j++) {
-				if (cur) cur = cur->next;
-			}
-			retAry[i] = dummy->next;
-			if (cur) {
-				dummy->next = cur->next;
-				end = cur;
+		for (i = 0; cur && i < k; i++, R--) {
+			retAry[i] = cur;
+			for (j = 0; j < Q + (R > 0); j++) {
+				pre = cur;
 				cur = cur->next;
-				end->next = nullptr;
 			}
+			pre->next = nullptr;
 		}
 
 		return retAry;
@@ -118,7 +112,7 @@ int main()
 #if self
 	vector<ListNode*> ary = Solution::splitListToParts(tmp[0], 15);
 #else
-	vector<ListNode*> ary = Solution::splitListToParts_leetcode(tmp[0], 15);
+	vector<ListNode*> ary = Solution::splitListToParts_leetcode(tmp[0], 3);
 #endif
 
 	ListNode *Group;
