@@ -58,6 +58,42 @@ public:
 		}
 		return retAry;
     }
+
+	static vector<ListNode*> splitListToParts_leetcode(ListNode* root, int k) {
+		int length = 0;
+
+		for (ListNode *ptr = root; ptr != nullptr; ptr = ptr->next)
+			length++;
+
+		int R = length % k;
+		int Q = length / k;
+		vector<ListNode*> retAry(k, nullptr);
+
+		cout << "R : " << R << endl;
+		cout << "Q : " << Q << endl;
+
+		int i = 0;
+		int j = 0;
+		ListNode *cur = root;
+		ListNode *dummy = new ListNode(-1);
+		ListNode *end;
+		dummy->next = root;
+
+		for (i = 0; i < k; i++, R--) {
+			for (j = 1; j < Q + (R > 0); j++) {
+				if (cur) cur = cur->next;
+			}
+			retAry[i] = dummy->next;
+			if (cur) {
+				dummy->next = cur->next;
+				end = cur;
+				cur = cur->next;
+				end->next = nullptr;
+			}
+		}
+
+		return retAry;
+	}
 };
 
 void printList(struct ListNode* head)
@@ -68,6 +104,7 @@ void printList(struct ListNode* head)
     cout << "NULL\n";
 }
 
+#define self 0
 int main()
 {
 
@@ -78,8 +115,11 @@ int main()
 		if (i > 0) tmp[i-1]->next = tmp[i];
 	}
 	printList(tmp[0]);
-
+#if self
 	vector<ListNode*> ary = Solution::splitListToParts(tmp[0], 15);
+#else
+	vector<ListNode*> ary = Solution::splitListToParts_leetcode(tmp[0], 15);
+#endif
 
 	ListNode *Group;
 	for (vector<ListNode*>::iterator it = ary.begin(); it != ary.end(); ++it) {
