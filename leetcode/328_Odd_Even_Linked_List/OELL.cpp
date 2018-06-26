@@ -9,13 +9,10 @@ public:
 		tmpEven = evenPtr = head->next;
 
 		while (tmpEven !=  nullptr && tmpEven->next != nullptr) {
-			tmpOdd->next = tmpOdd->next->next;
-			tmpOdd = tmpOdd->next;
-			tmpEven->next = tmpEven->next->next;
-			tmpEven = tmpEven->next;
+			tmpOdd = tmpOdd->next = tmpOdd->next->next;
+			tmpEven = tmpEven->next = tmpEven->next->next;
 		}
 		tmpOdd->next = evenPtr;
-		if (tmpEven) tmpEven->next = nullptr;
 		return oddPtr;
     }
 };
