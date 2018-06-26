@@ -1,5 +1,6 @@
 #include <iostream>
 #include "LinkListTools.h"
+#include <stack>
 #define SWAP(x, y, t) ((t) = (x), (x) = (y), (y) = (t))
 using namespace std;
 
@@ -67,6 +68,28 @@ public:
 		return head;
  	}
 
+	static ListNode* addTwoNumbers_stack(ListNode* l1, ListNode* l2) {
+		stack<int> s1, s2;
+		for (;l1 != nullptr; l1 = l1->next)
+			s1.push(l1->val);
+		for (;l2 != nullptr; l2 = l2->next)
+			s2.push(l2->val);
+
+		int sum = 0;
+		ListNode *cur = new ListNode(0);
+		while (!s1.empty() || !s2.empty()) {
+			if (!s1.empty()) {sum += s1.top(); s1.pop();}
+			if (!s2.empty()) {sum += s2.top(); s2.pop();}
+			cur->val = sum % 10;
+			ListNode *head = new ListNode(sum / 10);
+			head->next = cur;
+			cur = head;
+			sum = cur->val;
+		}
+		return cur->val == 0 ? cur->next : cur;
+
+	}
+
 };
 
 int main()
@@ -79,7 +102,9 @@ int main()
 	printList(l2Ptr);
 
 
-	ListNode* head = Solution::addTwoNumbers(l2Ptr, l1Ptr);
+//	ListNode* head = Solution::addTwoNumbers(l2Ptr, l1Ptr);
+	ListNode* head = Solution::addTwoNumbers_stack(l2Ptr, l1Ptr);
+
 	if (head->val == 0)
 		head = head->next;
 	printList(head);
