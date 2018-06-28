@@ -1,3 +1,6 @@
+#ifndef TREETOOLS_H
+#define TREETOOLS_H
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -7,3 +10,5 @@ struct TreeNode {
 
 
 void printTreePreorder(TreeNode *root);
+
+#endif

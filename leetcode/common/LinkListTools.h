@@ -1,3 +1,6 @@
+#ifndef LINKLISTTOOLS_H
+#define LINKLISTTOOLS_H
+
 #define lengthArray(A) (sizeof(A) / sizeof(A[0]))
 
 struct ListNode {
@@ -13,3 +16,4 @@ ListNode* createSequenceList(int start, int length);
 ListNode* createListFromIntAarry(int ary[], int length);
 
 ListNode* createListWithZero(int length);
+#endif
