@@ -10,32 +10,28 @@ class Solution {
 public:
 	static ListNode* partition(ListNode* head, int x) {
 		ListNode *target = new ListNode(-1);	//T
-		ListNode *cur = target;
+		ListNode *cur;
 		ListNode *bigThan = nullptr;	//B
 		target->next = head;
 
-		for (ListNode *ptr = target; ptr != nullptr; ptr = ptr->next) {
-			if (ptr->next->val >= x) {
-				cur = ptr;
-				bigThan = ptr->next;
+		for (cur = target; cur != nullptr; cur = cur->next) {
+			if (cur->next->val >= x) {
+				bigThan = cur->next;
 				break;
 			}
 		}
 
-		if (bigThan == nullptr || bigThan->next == nullptr) return head;
-
 		while (bigThan) {
+			/*確保下一個node 存在才能比較*/
+			if (bigThan->next && bigThan->next->val < x) {
+				ListNode *curNext = cur->next;
 
-			while (bigThan->next && bigThan->next->val >= x)
-				bigThan = bigThan->next;
+				cur->next = bigThan->next;
+				bigThan->next = bigThan->next->next;
 
-			ListNode *curNext = cur->next;
-
-			cur->next = bigThan->next;
-			bigThan->next = bigThan->next->next;
-
-			cur = cur->next;
-			cur->next = curNext;
+				cur = cur->next;
+				cur->next = curNext;
+			}
 			bigThan = bigThan->next;
 		}
 
