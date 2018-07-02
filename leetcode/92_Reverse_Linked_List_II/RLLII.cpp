@@ -3,6 +3,12 @@
 
 using namespace std;
 
+/**  P  C
+  * -1->1->2->3->4->5->n
+  *              P  C
+  * -1->1->2->3->4  5->n
+  */
+
 class Solution {
 public:
     static ListNode* reverseBetween(ListNode* head, int m, int n) {
@@ -11,15 +17,14 @@ public:
 		ListNode *pre = dummy;
 		ListNode *cur = head;
 		int i;
-		for (i = 1; i < m; i++) {
+		for (i = 1; i < m; ++i)
 			pre = pre->next;
-			cur = cur->next;
-		}
+
 		ListNode *preMth = pre;
-		ListNode *Mth = cur;
+		ListNode *Mth = cur = pre->next;
 		ListNode *tmp;
 
-		for (i = m; i <=n; i++) {
+		for (i = m; i <=n; ++i) {
 			if (!cur) break;
 			tmp = cur->next;
 			cur->next = pre;
@@ -40,7 +45,7 @@ int main()
 	ListNode *head = createListFromIntAarry(ary, lengthArray(ary));
 	printList(head);
 
-	ListNode *head2 = Solution::reverseBetween(head, 1, 4);
+	ListNode *head2 = Solution::reverseBetween(head, 2, 4);
 	printList(head2);
 	return 0;
 }
