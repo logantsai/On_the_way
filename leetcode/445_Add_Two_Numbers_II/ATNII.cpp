@@ -96,8 +96,8 @@ int main()
 {
 	int l1[] = {9, 9, 9, 9};
 	int l2[] = {9, 9, 9};
-	ListNode* l1Ptr = createListFromIntAarry(l1, lengthArray(l1));
-	ListNode* l2Ptr = createListFromIntAarry(l2, lengthArray(l2));
+	ListNode* l1Ptr = createListFromIntArray(l1, lengthArray(l1));
+	ListNode* l2Ptr = createListFromIntArray(l2, lengthArray(l2));
 	printList(l1Ptr);
 	printList(l2Ptr);
 

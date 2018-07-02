@@ -33,7 +33,7 @@ public:
 int main()
 {
 	int ary[] = {-10, -3, -1, 0, 5, 9};
-	ListNode *head = createListFromIntAarry(ary, lengthArray(ary));
+	ListNode *head = createListFromIntArray(ary, lengthArray(ary));
 	TreeNode *tree = Solution::sortedListToBST(head);
 	cout << "Preoder: ";
 	printTreePreorder(tree);

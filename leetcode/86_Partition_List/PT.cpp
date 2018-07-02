@@ -66,7 +66,7 @@ public:
 int main()
 {
 	int ary[] = {1, 4, 3, 2, 5, 2};
-	ListNode *head = createListFromIntAarry(ary, lengthArray(ary));
+	ListNode *head = createListFromIntArray(ary, lengthArray(ary));
 	printList(head);
 
 	ListNode *head2 = Solution::partition(head, 3);

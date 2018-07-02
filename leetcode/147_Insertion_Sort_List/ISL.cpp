@@ -68,7 +68,7 @@ public:
 int main()
 {
 	int ary[] = {5, 6, 1, 2};
-	ListNode *head = createListFromIntAarry(ary, lengthArray(ary));
+	ListNode *head = createListFromIntArray(ary, lengthArray(ary));
 	printList(head);
 	//ListNode *head2 = Solution::insertionSortList(head);
 	//printList(head2);

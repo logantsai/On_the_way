@@ -44,7 +44,7 @@ public:
 int main()
 {
 	int ary[] = {10, 9 ,7, 8, 5, 6, 3, 4, 1, 2};
-	ListNode *head = createListFromIntAarry(ary, lengthArray(ary));
+	ListNode *head = createListFromIntArray(ary, lengthArray(ary));
 	printList(head);
 	ListNode *head2 = Solution::sortList(head);
 	printList(head2);

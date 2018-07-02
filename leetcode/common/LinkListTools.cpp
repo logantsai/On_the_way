@@ -22,7 +22,7 @@ ListNode* createSequenceList(int start, int length)
 	return head;
 }
 
-ListNode* createListFromIntAarry(int ary[], int length)
+ListNode* createListFromIntArray(int ary[], int length)
 {
 	struct ListNode *pre = new ListNode(ary[0]);
 	struct ListNode *head = pre;

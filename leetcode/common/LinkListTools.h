@@ -13,7 +13,7 @@ void printList(struct ListNode* head);
 
 ListNode* createSequenceList(int start, int length);
 
-ListNode* createListFromIntAarry(int ary[], int length);
+ListNode* createListFromIntArray(int ary[], int length);
 
 ListNode* createListWithZero(int length);
 #endif

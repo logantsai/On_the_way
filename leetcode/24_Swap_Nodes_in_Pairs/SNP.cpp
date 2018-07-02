@@ -39,7 +39,7 @@ public:
 int main()
 {
 	int ary[] = {1, 2, 3, 4, 5};
-	ListNode *head = createListFromIntAarry(ary, lengthArray(ary));
+	ListNode *head = createListFromIntArray(ary, lengthArray(ary));
 	printList(head);
 
 //	ListNode *head2 = Solution::swapPairs(head);

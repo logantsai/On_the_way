@@ -22,7 +22,7 @@ int main()
 {
 	int ary[] = {2, 1, 3, 5, 6, 4, 7};
 	//int ary[] = {2, 1};
-	ListNode* head = createListFromIntAarry(ary, lengthArray(ary));
+	ListNode* head = createListFromIntArray(ary, lengthArray(ary));
 	printList(head);
 
 	ListNode* head2 = Solution::oddEvenList(head);
