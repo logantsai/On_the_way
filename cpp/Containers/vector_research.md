@@ -34,7 +34,7 @@
 
 	/* 3.2 push_back/pop_back */
 	first.push_back(1);	// it will realloc memory if necessary。
-	first.pop_back(1);
+	first.pop_back();
 
 	/* 3.3 insert/erase/clear */
 	first.insert();	// insert the ints before iterator pointer
