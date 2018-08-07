@@ -16,18 +16,23 @@ class Solution {
 public:
 	static string toLowerCase(string str) {
 		string lower_case_str;
-		lower_case_str.reserve(str.size());
-
+		string lower_case_str2(str.size(), 'a');
+		cout << "lower_case_str2: " << lower_case_str2 << endl;
+		cout << "lower_case_str size: " << lower_case_str.size() << endl;
+		cout << "lower_case_str capacity: " << lower_case_str.capacity() << endl;
 		/* lamdba */
-		const auto to_lower = [](const char c) -> char {
+		auto to_lower = [] (char c) -> char {
 			if (c >= 65 && c <= 90) {
 				return c + 32;
 			}
 			return c;
 		};
 
+		/* lower_case_str 沒有元素 begin 不知道在哪 */
 		transform(str.begin(), str.end(), back_inserter(lower_case_str), to_lower);
-		return lower_case_str;
+		/* str 有值確定其 begin 有東西 */
+		transform(str.begin(), str.end(), lower_case_str2.begin(), to_lower);
+		return lower_case_str2;
 	}
 };
 
