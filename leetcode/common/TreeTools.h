@@ -9,6 +9,10 @@ struct TreeNode {
 };
 
 
-void printTreePreorder(TreeNode *root);
+void printTreePreorder(struct TreeNode *root);
+void printTreeLevelorder(struct TreeNode *root);
+struct TreeNode *intAryToTree(std::vector<int> ary, int sizeOfAry,
+    struct TreeNode *root, int index);
+
 
 #endif
