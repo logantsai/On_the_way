@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 #include "TreeTools.h"
 
 using namespace std;
@@ -17,6 +18,75 @@ void printTreePreorder(struct TreeNode *root)
 	std::cout << root->val << " ";
 	printTreePreorder(root->left);
 	printTreePreorder(root->right);
+}
+
+void printTreePreorderIterative(struct TreeNode *root)
+{
+    stack<TreeNode*> stk;
+    stk.push(root);
+    while (!stk.empty()) {
+        struct TreeNode *node = stk.top();
+        stk.pop();
+        cout << node->val << " ";
+        if (node->left) stk.push(node->left);
+        if (node->right) stk.push(node->right);
+    }
+}
+#if 0
+/* This method push only right child to stack */
+void printTreePreorderIterative2(struct TreeNode *root)
+{
+    stack<TreeNode*> stk;
+    stk.push(root);
+    struct TreeNode *cur = root;
+
+    while (!stk.empty()) {
+        if (cur) {
+            cout << cur->val << " ";
+            if (cur->right) stk.push(cur->right);
+            cur = cur->left;
+        } else {
+            cur = stk.top();
+            stk.pop();
+        }
+    }
+}
+#endif
+void printTreeInorderIterative(struct TreeNode *root)
+{
+    stack<TreeNode*> stk;
+    struct TreeNode *cur = root;
+    while (cur || !stk.empty()) {
+        if (cur) {
+            stk.push(cur);
+            cur = cur->left;
+        } else {
+            struct TreeNode *node = stk.top();
+            stk.pop();
+            cout << node->val << " ";
+            cur = node->right;
+        }
+    }
+}
+
+void printTreePostorderIterative(struct TreeNode *root)
+{
+    stack<TreeNode*> stk;
+    stk.push(root);
+    struct TreeNode *pre_pop = root;
+    while (!stk.empty()) {
+        struct TreeNode *node = stk.top();
+        if ((!node->right && !node->left) ||
+            node->left != pre_pop || node->right != pre_pop) {
+            stk.pop();
+            cout << node->val << " ";
+            pre_pop = node;
+        } else {
+            if (node->right) stk.push(node->right);
+            if (node->left) stk.push(node->left);
+        }
+
+    }
 }
 
 void printTreeLevelorder(struct TreeNode *root)
