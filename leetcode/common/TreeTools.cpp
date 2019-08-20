@@ -77,7 +77,7 @@ void printTreePostorderIterative(struct TreeNode *root)
     while (!stk.empty()) {
         struct TreeNode *node = stk.top();
         if ((!node->right && !node->left) ||
-            node->left != pre_pop || node->right != pre_pop) {
+            node->left == pre_pop || node->right == pre_pop) {
             stk.pop();
             cout << node->val << " ";
             pre_pop = node;
